@@ -1,0 +1,92 @@
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"container.cnrm.cloud.google.com/v1beta1","kind":"ContainerCluster","metadata":{"annotations":{},"name":"web","namespace":"default"},"spec":{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-02-24T21:42:01Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: cluster
+    availability: default
+    target-audience: development
+  managedFields:
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-02-24T21:42:01Z'
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-02-24T21:45:13Z'
+  name: cluster
+  namespace: default
+  resourceVersion: '4988232'
+  selfLink: >-
+    /apis/container.cnrm.cloud.google.com/v1beta1/namespaces/default/containerclusters/cluster
+  uid: 3fe6775e-7648-4560-8642-29f8b4792464
+spec:
+  addonsConfig:
+    gcePersistentDiskCsiDriverConfig:
+      enabled: true
+    horizontalPodAutoscaling:
+      disabled: true
+    httpLoadBalancing:
+      disabled: true
+    kalmConfig:
+      enabled: true
+    networkPolicyConfig:
+      disabled: true
+  clusterAutoscaling:
+    autoscalingProfile: BALANCED
+    enabled: false
+  clusterIpv4Cidr: 10.96.0.0/14
+  clusterTelemetry:
+    type: SYSTEM_ONLY
+  databaseEncryption:
+    state: DECRYPTED
+  defaultSnatStatus:
+    disabled: false
+  description: A routes-based cluster confined to one zone configured for development.
+  initialNodeCount: 1
+  location: us-central1-c
+  loggingService: logging.googleapis.com/kubernetes
+  monitoringService: monitoring.googleapis.com/kubernetes
+  networkingMode: ROUTES
+  nodeConfig:
+    diskSizeGb: 100
+    diskType: pd-standard
+    imageType: COS
+    machineType: e2-medium
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+      - 'https://www.googleapis.com/auth/logging.write'
+      - 'https://www.googleapis.com/auth/monitoring'
+      - 'https://www.googleapis.com/auth/service.management.readonly'
+      - 'https://www.googleapis.com/auth/servicecontrol'
+      - 'https://www.googleapis.com/auth/trace.append'
+      - 'https://www.googleapis.com/auth/devstorage.read_only'
+    serviceAccountRef:
+      external: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+  nodeVersion: 1.18.12-gke.1210
+  notificationConfig:
+    pubsub:
+      enabled: false
+  podSecurityPolicyConfig:
+    enabled: false
+  releaseChannel:
+    channel: REGULAR
+status:
+  conditions:
+    - lastTransitionTime: '2021-02-24T21:42:02Z'
+      message: Update in progress
+      reason: Updating
+      status: 'False'
+      type: Ready
