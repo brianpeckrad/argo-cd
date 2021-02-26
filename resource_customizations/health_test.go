@@ -1,6 +1,7 @@
 package resource_customizations
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -39,6 +40,7 @@ func TestLuaHealthScript(t *testing.T) {
 		if !strings.Contains(path, "health.lua") {
 			return nil
 		}
+		fmt.Println(path)
 		errors.CheckError(err)
 		dir := filepath.Dir(path)
 		yamlBytes, err := ioutil.ReadFile(dir + "/health_test.yaml")
@@ -53,11 +55,16 @@ func TestLuaHealthScript(t *testing.T) {
 					UseOpenLibs: true,
 				}
 				obj := getObj(filepath.Join(dir, test.InputPath))
+				if path == "container.cnrm.cloud.google.com/google_kubernetes_engine/container_cluster/health.lua" {
+					fmt.Println("DEBUG", test.InputPath)
+				}
 				script, err := vm.GetHealthScript(obj)
 				errors.CheckError(err)
 				result, err := vm.ExecuteHealthLua(obj, script)
 				errors.CheckError(err)
-				assert.Equal(t, &test.HealthStatus, result)
+				if !assert.Equal(t, &test.HealthStatus, result) {
+					fmt.Println(test.InputPath)
+				}
 			})
 		}
 		return nil
