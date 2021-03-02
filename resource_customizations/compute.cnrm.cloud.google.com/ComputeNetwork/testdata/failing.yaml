@@ -1,4 +1,4 @@
-apiVersion: container.cnrm.cloud.google.com/v1beta1
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeNetwork
 metadata:
   annotations:
@@ -31,8 +31,14 @@ metadata:
   uid: 3fe6775e-7648-4560-8642-29f8b4792464
 status:
   conditions:
-    - lastTransitionTime: '2021-02-24T21:42:02Z'
-      message: Update in progress
-      reason: Updating
+    - lastTransitionTime: '2021-03-02T19:25:59Z'
+      message: >-
+        Delete call failed: error deleting resource: [{0 Error waiting for
+        Deleting Network: The network resource
+        'projects/devx-rpml/global/networks/computeaddress-dep-global' is
+        already being used by
+        'projects/devx-rpml/global/addresses/computeaddress-sample-global'
+          []}]
+      reason: DeleteFailed
       status: 'False'
       type: Ready
