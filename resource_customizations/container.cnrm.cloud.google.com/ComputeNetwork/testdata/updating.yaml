@@ -23,7 +23,7 @@ metadata:
       manager: cnrm-controller-manager
       operation: Update
       time: '2021-02-24T21:45:13Z'
-  name: cluster
+  name: network
   namespace: default
   resourceVersion: '4988232'
   selfLink: >-
