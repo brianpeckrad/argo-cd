@@ -1,0 +1,42 @@
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeFirewall
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: none
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"container.cnrm.cloud.google.com/v1beta1","kind":"ComputeFirewall","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"compute-firewall-rule"},"name":"compute-firewall-rule","namespace":"default"}},"spec":{"allow":[{"ports":["80","1000-2000"],"protocol":"tcp"}],{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-03T04:34:16Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 2
+  labels:
+    argocd.argoproj.io/instance: compute-firewall-rule
+  managedFields:
+    - apiVersion: compute.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-03T04:34:15Z'
+    - apiVersion: compute.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-03T04:34:17Z'
+  name: compute-firewall-rule
+  namespace: default
+  resourceVersion: '9209159'
+  selfLink: >-
+    /apis/compute.cnrm.cloud.google.com/v1beta1/namespaces/default/computefirewalls/compute-firewall-rule
+  uid: 95803976-a213-4d33-a2aa-ffb9d914b5ff
+spec:
+  allow:
+    - ports:
+        - '80'
+        - 1000-2000
+      protocol: tcp
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T04:34:17Z'
+      message: Update in progress
+      reason: Updating
+      status: 'False'
+      type: Ready
