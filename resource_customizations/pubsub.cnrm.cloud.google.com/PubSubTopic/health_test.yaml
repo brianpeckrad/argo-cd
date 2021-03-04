@@ -1,0 +1,9 @@
+tests:
+- healthStatus:
+    status: Progressing
+    message: Update in progress
+  inputPath: testdata/updating.yaml
+- healthStatus:
+    status: Healthy
+    message: The resource is up to date
+  inputPath: testdata/running.yaml
