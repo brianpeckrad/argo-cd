@@ -1,0 +1,41 @@
+apiVersion: sql.cnrm.cloud.google.com/v1beta1
+kind: SQLInstance
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"sql.cnrm.cloud.google.com/v1beta1","kind":"SQLInstance","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"sql-instance"},"name":"sqlinstance-sample-mysql","namespace":"default"},"spec":{"databaseVersion":"MYSQL_5_7","region":"us-central1","settings":{"tier":"db-f1-micro"}},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-05T20:22:07Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 2
+  labels:
+    argocd.argoproj.io/instance: sql-instance
+  managedFields:
+    - apiVersion: sql.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-05T20:22:07Z'
+    - apiVersion: sql.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-05T20:22:09Z'
+  name: sqlinstance-sample-mysql
+  namespace: default
+  resourceVersion: '10994439'
+  selfLink: >-
+    /apis/sql.cnrm.cloud.google.com/v1beta1/namespaces/default/sqlinstances/sqlinstance-sample-mysql
+  uid: 2f8d1487-94be-45fa-813a-d92137a7039a
+spec:
+  databaseVersion: MYSQL_5_7
+  region: us-central1
+  settings:
+    tier: db-f1-micro
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-05T20:22:09Z'
+      message: Update in progress
+      reason: Updating
+      status: 'False'
+      type: Ready
