@@ -1,0 +1,48 @@
+apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+kind: PubSubSubscription
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"pubsub.cnrm.cloud.google.com/v1beta1","kind":"PubSubSubscription","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"pub-sub-description","label-one":"value-one"},"name":"pubsubsubscription-sample","namespace":"default"},"spec":{"ackDeadlineSeconds":15,"deadLetterPolicy":{"deadLetterTopicRef":{"name":"pubsubsubscription-dep2"}},"messageRetentionDuration":"86400s","retainAckedMessages":false,"topicRef":{"name":"pubsubsubscription-dep"}},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-05T17:01:36Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: pub-sub-description
+  managedFields:
+    - apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-05T17:01:36Z'
+    - apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-05T17:01:38Z'
+  name: pubsubsubscription-sample
+  namespace: default
+  resourceVersion: '10900981'
+  selfLink: >-
+    /apis/pubsub.cnrm.cloud.google.com/v1beta1/namespaces/default/pubsubsubscriptions/pubsubsubscription-sample
+  uid: 707c6ad1-3418-464d-9ebe-488273afd222
+spec:
+  ackDeadlineSeconds: 15
+  deadLetterPolicy:
+    deadLetterTopicRef:
+      name: pubsubsubscription-dep2
+    maxDeliveryAttempts: 5
+  expirationPolicy:
+    ttl: 2678400s
+  messageRetentionDuration: 86400s
+  retainAckedMessages: false
+  topicRef:
+    name: pubsubsubscription-dep
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T04:34:17Z'
+      message: Update in progress
+      reason: Updating
+      status: 'False'
+      type: Ready
