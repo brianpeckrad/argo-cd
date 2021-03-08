@@ -1,0 +1,39 @@
+apiVersion: storage.cnrm.cloud.google.com/v1beta1
+kind: StorageBucket
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"storage.cnrm.cloud.google.com/v1beta1","kind":"StorageBucket","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"cloud-storage-bucket-access-control"},"name":"bucketaccesscontrol-dep","namespace":"default"}}
+  creationTimestamp: '2021-03-08T15:45:18Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: cloud-storage-bucket-access-control
+  managedFields:
+    - apiVersion: storage.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-08T15:45:18Z'
+    - apiVersion: storage.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-08T15:45:20Z'
+  name: bucketaccesscontrol-dep
+  namespace: default
+  resourceVersion: '12875201'
+  selfLink: >-
+    /apis/storage.cnrm.cloud.google.com/v1beta1/namespaces/default/storagebuckets/bucketaccesscontrol-dep
+  uid: 5393920b-8185-4939-a43a-665196008e8b
+spec:
+  location: US
+  storageClass: STANDARD
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-08T15:45:20Z'
+      message: The resource is up to date
+      reason: UpToDate
+      status: 'True'
+      type: Ready
