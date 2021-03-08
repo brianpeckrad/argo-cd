@@ -1,0 +1,42 @@
+apiVersion: storage.cnrm.cloud.google.com/v1beta1
+kind: StorageBucketAccessControl
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: none
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"storage.cnrm.cloud.google.com/v1beta1","kind":"StorageBucketAccessControl","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"cloud-storage-bucket-access-control","label-one":"value-one"},"name":"storagebucketaccesscontrol-sample","namespace":"default"},"spec":{"bucketRef":{"name":"bucketaccesscontrol-dep"},"entity":"allAuthenticatedUsers","role":"READER"}}
+  creationTimestamp: '2021-03-08T15:45:45Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: cloud-storage-bucket-access-control
+    label-one: value-one
+  managedFields:
+    - apiVersion: storage.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-08T15:45:45Z'
+    - apiVersion: storage.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-08T15:45:47Z'
+  name: storagebucketaccesscontrol-sample
+  namespace: default
+  resourceVersion: '12875453'
+  selfLink: >-
+    /apis/storage.cnrm.cloud.google.com/v1beta1/namespaces/default/storagebucketaccesscontrols/storagebucketaccesscontrol-sample
+  uid: fd2df4de-af5a-4341-8cf3-9c6e9003afdd
+spec:
+  bucketRef:
+    name: bucketaccesscontrol-dep
+  entity: allAuthenticatedUsers
+  role: READER
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-05T20:22:09Z'
+      message: Update in progress
+      reason: Updating
+      status: 'False'
+      type: Ready
