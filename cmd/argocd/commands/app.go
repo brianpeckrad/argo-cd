@@ -556,6 +556,7 @@ func NewApplicationUnsetCommand(clientOpts *argocdclient.ClientOptions) *cobra.C
 		namePrefix       bool
 		kustomizeVersion bool
 		kustomizeImages  []string
+		pluginEnvs       []string
 		appOpts          cmdutil.AppOptions
 	)
 	var command = &cobra.Command{
@@ -661,9 +662,22 @@ func NewApplicationUnsetCommand(clientOpts *argocdclient.ClientOptions) *cobra.C
 						}
 					}
 				}
-				if !updated {
-					return
+			}
+
+			if app.Spec.Source.Plugin != nil {
+				if len(pluginEnvs) == 0 {
+					c.HelpFunc()(c, args)
+					os.Exit(1)
 				}
+				for _, env := range pluginEnvs {
+					err = app.Spec.Source.Plugin.RemoveEnvEntry(env)
+					errors.CheckError(err)
+				}
+				updated = true
+			}
+
+			if !updated {
+				return
 			}
 
 			cmdutil.SetAppSpecOptions(c.Flags(), &app.Spec, &appOpts)
@@ -682,6 +696,7 @@ func NewApplicationUnsetCommand(clientOpts *argocdclient.ClientOptions) *cobra.C
 	command.Flags().BoolVar(&namePrefix, "nameprefix", false, "Kustomize nameprefix")
 	command.Flags().BoolVar(&kustomizeVersion, "kustomize-version", false, "Kustomize version")
 	command.Flags().StringArrayVar(&kustomizeImages, "kustomize-image", []string{}, "Kustomize images name (e.g. --kustomize-image node --kustomize-image mysql)")
+	command.Flags().StringArrayVar(&pluginEnvs, "plugin-env", []string{}, "Unset plugin env variables (e.g --plugin-env name)")
 	return command
 }
 
@@ -936,8 +951,9 @@ func groupObjsForDiff(resources *application.ManagedResourcesResponse, objs map[
 // NewApplicationDeleteCommand returns a new instance of an `argocd app delete` command
 func NewApplicationDeleteCommand(clientOpts *argocdclient.ClientOptions) *cobra.Command {
 	var (
-		cascade  bool
-		noPrompt bool
+		cascade           bool
+		noPrompt          bool
+		propagationPolicy string
 	)
 	var command = &cobra.Command{
 		Use:   "delete APPNAME",
@@ -962,6 +978,9 @@ func NewApplicationDeleteCommand(clientOpts *argocdclient.ClientOptions) *cobra.
 				}
 				if c.Flag("cascade").Changed {
 					appDeleteReq.Cascade = &cascade
+				}
+				if c.Flag("propagation-policy").Changed {
+					appDeleteReq.PropagationPolicy = &propagationPolicy
 				}
 				if cascade && isTerminal && !noPrompt {
 					var confirmAnswer string = "n"
@@ -997,6 +1016,7 @@ func NewApplicationDeleteCommand(clientOpts *argocdclient.ClientOptions) *cobra.
 		},
 	}
 	command.Flags().BoolVar(&cascade, "cascade", true, "Perform a cascaded deletion of all application resources")
+	command.Flags().StringVarP(&propagationPolicy, "propagation-policy", "p", "foreground", "Specify propagation policy for deletion of application's resources. One of: foreground|background")
 	command.Flags().BoolVarP(&noPrompt, "yes", "y", false, "Turn off prompting to confirm cascaded deletion of application resources")
 	return command
 }
@@ -1045,6 +1065,7 @@ func NewApplicationListCommand(clientOpts *argocdclient.ClientOptions) *cobra.Co
 		output   string
 		selector string
 		projects []string
+		repo     string
 	)
 	var command = &cobra.Command{
 		Use:   "list",
@@ -1063,6 +1084,9 @@ func NewApplicationListCommand(clientOpts *argocdclient.ClientOptions) *cobra.Co
 			if len(projects) != 0 {
 				appList = argo.FilterByProjects(appList, projects)
 			}
+			if repo != "" {
+				appList = argo.FilterByRepo(appList, repo)
+			}
 			switch output {
 			case "yaml", "json":
 				err := PrintResourceList(appList, output, false)
@@ -1079,6 +1103,7 @@ func NewApplicationListCommand(clientOpts *argocdclient.ClientOptions) *cobra.Co
 	command.Flags().StringVarP(&output, "output", "o", "wide", "Output format. One of: wide|name|json|yaml")
 	command.Flags().StringVarP(&selector, "selector", "l", "", "List apps by label")
 	command.Flags().StringArrayVarP(&projects, "project", "p", []string{}, "Filter by project name")
+	command.Flags().StringVarP(&repo, "repo", "r", "", "List apps by source repo URL")
 	return command
 }
 
