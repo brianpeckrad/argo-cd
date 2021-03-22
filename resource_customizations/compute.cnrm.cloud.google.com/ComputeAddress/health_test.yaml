@@ -6,4 +6,4 @@ tests:
 - healthStatus:
     status: Healthy
     message: The resource is up to date
-  inputPath: testdata/running.yaml
+  inputPath: testdata/ready.yaml
