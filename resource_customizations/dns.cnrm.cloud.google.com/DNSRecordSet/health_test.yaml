@@ -1,8 +1,12 @@
 tests:
 - healthStatus:
+    status: Unknown
+    message: reference DNSManagedZone is not found
+  inputPath: testdata/dependency_not_found.yaml
+- healthStatus:
     status: Missing
     message: reference DNSManagedZone is not ready
-  inputPath: testdata/missing.yaml
+  inputPath: testdata/dependency_not_ready.yaml
 - healthStatus:
     status: Progressing
     message: Update in progress
