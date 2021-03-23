@@ -1,7 +1,7 @@
 tests:
 - healthStatus:
     status: Degraded
-    message: reference ComputeNetwork is not found
+    message: reference ComputeNetwork is invalid
   inputPath: testdata/dependency_invalid.yaml
 - healthStatus:
     status: Unknown
