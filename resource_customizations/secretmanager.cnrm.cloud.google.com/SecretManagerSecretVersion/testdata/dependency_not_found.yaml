@@ -1,0 +1,45 @@
+apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
+kind: SecretManagerSecretVersion
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: none
+    cnrm.cloud.google.com/observed-secret-versions: '{"secretmanagersecretversion-dep":"10944892"}'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"secretmanager.cnrm.cloud.google.com/v1beta1","kind":"SecretManagerSecretVersion","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"secret-manager-secret-version"},"name":"secretmanagersecretversion-sample","namespace":"default"},"spec":{"enabled":true,"secretData":{"valueFrom":{"secretKeyRef":{"key":"secretData","name":"secretmanagersecretversion-dep"}}},"secretRef":{"name":"secretmanagersecretversion-dep"}},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-05T18:36:03Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: secret-manager-secret-version
+  managedFields:
+    - apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-05T18:36:03Z'
+    - apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-05T18:36:04Z'
+  name: secretmanagersecretversion-sample
+  namespace: default
+  resourceVersion: '10945125'
+  selfLink: >-
+    /apis/secretmanager.cnrm.cloud.google.com/v1beta1/namespaces/default/secretmanagersecretversions/secretmanagersecretversion-sample
+  uid: 9a1e5b68-70ad-4583-b1e3-53789ce0f7fd
+spec:
+  enabled: true
+  secretData:
+    valueFrom:
+      secretKeyRef:
+        key: secretData
+        name: secretmanagersecretversion-dep
+  secretRef:
+    name: secretmanagersecretversion-dep
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T17:15:17Z'
+      reason: DependencyNotFound
+      status: 'False'
+      type: Ready

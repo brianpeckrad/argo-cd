@@ -1,0 +1,37 @@
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeNetwork
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"container.cnrm.cloud.google.com/v1beta1","kind":"ComputeNetwork","metadata":{"annotations":{},"name":"web","namespace":"default"},"spec":{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-02-24T21:42:01Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: network
+    availability: default
+    target-audience: development
+  managedFields:
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-02-24T21:42:01Z'
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-02-24T21:45:13Z'
+  name: network
+  namespace: default
+  resourceVersion: '4988232'
+  selfLink: >-
+    /apis/container.cnrm.cloud.google.com/v1beta1/namespaces/default/containerclusters/network
+  uid: 3fe6775e-7648-4560-8642-29f8b4792464
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-01T19:46:04Z'
+      reason: DependencyNotReady
+      status: 'False'
+      type: Ready
