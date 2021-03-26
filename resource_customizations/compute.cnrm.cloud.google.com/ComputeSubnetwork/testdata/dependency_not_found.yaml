@@ -32,7 +32,6 @@ metadata:
 status:
   conditions:
     - lastTransitionTime: '2021-03-01T19:46:04Z'
-      message: reference ComputeNetwork is not found
       reason: DependencyNotFound
       status: 'False'
       type: Ready

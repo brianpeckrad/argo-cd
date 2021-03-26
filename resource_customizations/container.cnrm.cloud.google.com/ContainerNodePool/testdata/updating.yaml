@@ -30,7 +30,6 @@ metadata:
 status:
   conditions:
     - lastTransitionTime: '2021-02-24T21:42:02Z'
-      message: Update in progress
       reason: Updating
       status: 'False'
       type: Ready

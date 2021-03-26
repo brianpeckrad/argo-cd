@@ -30,7 +30,6 @@ metadata:
 status:
   conditions:
     - lastTransitionTime: '2021-03-04T20:03:33Z'
-      message: The resource is up to date
       reason: UpToDate
       status: 'True'
       type: Ready
