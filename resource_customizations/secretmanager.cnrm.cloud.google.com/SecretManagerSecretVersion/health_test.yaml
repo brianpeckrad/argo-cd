@@ -1,33 +1,16 @@
 tests:
 - healthStatus:
     status: Degraded
-    message: reference Secret is invalid
-  inputPath: testdata/secret_invalid.yaml
+  inputPath: testdata/dependency_invalid.yaml
 - healthStatus:
     status: Unknown
-    message: reference Secret is not found
-  inputPath: testdata/secret_not_found.yaml
+  inputPath: testdata/dependency_not_found.yaml
 - healthStatus:
     status: Missing
-    message: reference Secret is not ready
-  inputPath: testdata/secret_not_ready.yaml
-- healthStatus:
-    status: Degraded
-    message: reference SecretManagerSecret is invalid
-  inputPath: testdata/secretmanagersecret_invalid.yaml
-- healthStatus:
-    status: Unknown
-    message: reference SecretManagerSecret is not found
-  inputPath: testdata/secretmanagersecret_not_found.yaml
-- healthStatus:
-    status: Missing
-    message: reference SecretManagerSecret is not ready
-  inputPath: testdata/secretmanagersecret_not_ready.yaml
+  inputPath: testdata/dependency_not_ready.yaml
 - healthStatus:
     status: Progressing
-    message: Update in progress
   inputPath: testdata/updating.yaml
 - healthStatus:
     status: Healthy
-    message: The resource is up to date
   inputPath: testdata/running.yaml
