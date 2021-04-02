@@ -1,9 +1,16 @@
 tests:
 - healthStatus:
+    status: Degraded
+  inputPath: testdata/dependency_invalid.yaml
+- healthStatus:
+    status: Unknown
+  inputPath: testdata/dependency_not_found.yaml
+- healthStatus:
+    status: Missing
+  inputPath: testdata/dependency_not_ready.yaml
+- healthStatus:
     status: Progressing
-    message: Update in progress
   inputPath: testdata/updating.yaml
 - healthStatus:
     status: Healthy
-    message: The resource is up to date
   inputPath: testdata/running.yaml
