@@ -1,0 +1,44 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicy
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"iam.cnrm.cloud.google.com/v1beta1","kind":"IAMPolicy","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"iam-policy-pubsub-admin"},"name":"iampolicy-sample-pubsubadmin","namespace":"default"},"spec":{"bindings":[{"members":["serviceAccount:iampolicy-dep-pubsubadmin@${Project-ID}.iam.gserviceaccount.com"],"role":"roles/editor"}],"resourceRef":{"apiVersion":"pubsub.cnrm.cloud.google.com/v1beta1","kind":"PubSubTopic","name":"iampolicy-dep-pubsubadmin"}},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}
+  creationTimestamp: '2021-03-04T19:42:21Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 2
+  labels:
+    argocd.argoproj.io/instance: iam-policy-pubsub-admin
+  managedFields:
+    - apiVersion: iam.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-04T19:42:21Z'
+    - apiVersion: iam.cnrm.cloud.google.com/v1beta1
+      manager: manager
+      operation: Update
+      time: '2021-03-04T19:42:23Z'
+  name: iampolicy-sample-pubsubadmin
+  namespace: default
+  resourceVersion: '10304839'
+  selfLink: >-
+    /apis/iam.cnrm.cloud.google.com/v1beta1/namespaces/default/iampolicies/iampolicy-sample-pubsubadmin
+  uid: d3997c5f-57eb-4c5b-93a3-2156b0b8eb98
+spec:
+  bindings:
+    - members:
+        - >-
+          serviceAccount:iampolicy-dep-pubsubadmin@${Project-ID}.gserviceaccount.com
+      role: roles/editor
+  resourceRef:
+    apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+    kind: PubSubTopic
+    name: iampolicy-dep-pubsubadmin
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T04:34:17Z'
+      reason: DependencyNotFound
+      status: 'False'
+      type: Ready
