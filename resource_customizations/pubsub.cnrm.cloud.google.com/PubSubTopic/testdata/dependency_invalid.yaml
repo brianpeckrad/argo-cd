@@ -1,0 +1,35 @@
+apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+kind: PubSubTopic
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"pubsub.cnrm.cloud.google.com/v1beta1","kind":"PubSubTopic","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"iam-policy-pubsub-admin"},"name":"iampolicy-dep-pubsubadmin","namespace":"default"},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-04T20:03:31Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: iam-policy-pubsub-admin
+  managedFields:
+    - apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-04T20:03:31Z'
+    - apiVersion: pubsub.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-04T20:03:33Z'
+  name: iampolicy-dep-pubsubadmin
+  namespace: default
+  resourceVersion: '10314702'
+  selfLink: >-
+    /apis/pubsub.cnrm.cloud.google.com/v1beta1/namespaces/default/pubsubtopics/iampolicy-dep-pubsubadmin
+  uid: bc620b0b-ebde-4473-913d-f1cd0a978d40
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T04:34:17Z'
+      reason: DependencyInvalid
+      status: 'False'
+      type: Ready
