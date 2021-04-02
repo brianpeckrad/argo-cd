@@ -1,0 +1,45 @@
+apiVersion: dns.cnrm.cloud.google.com/v1beta1
+kind: DNSManagedZone
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"dns.cnrm.cloud.google.com/v1beta1","kind":"DNSManagedZone","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"dns-managed-zone"},"name":"dns-managed-zone","namespace":"default"},"spec":{"description":"Example
+      DNS
+      zone","dnsName":"cnrm-dns-example.com.","privateVisibilityConfig":{"networks":[{"networkRef":{"name":"default"}}]},"visibility":"private"},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-03T05:24:21Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 3
+  labels:
+    argocd.argoproj.io/instance: dns-managed-zone
+  managedFields:
+    - apiVersion: dns.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-03T05:24:21Z'
+    - apiVersion: dns.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-03T05:24:23Z'
+  name: dns-managed-zone
+  namespace: default
+  resourceVersion: '9232567'
+  selfLink: >-
+    /apis/dns.cnrm.cloud.google.com/v1beta1/namespaces/default/dnsmanagedzones/dns-managed-zone
+  uid: 77ebc520-627f-4eee-a90a-13ef962b7f35
+spec:
+  description: Example DNS zone
+  dnsName: cnrm-dns-example.com.
+  privateVisibilityConfig:
+    networks:
+      - networkRef:
+          name: default
+  visibility: private
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-03T05:24:23Z'
+      reason: DependencyNotFound
+      status: 'False'
+      type: Ready
