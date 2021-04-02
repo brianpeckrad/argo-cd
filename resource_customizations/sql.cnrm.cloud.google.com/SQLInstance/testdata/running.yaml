@@ -49,7 +49,6 @@ spec:
 status:
   conditions:
     - lastTransitionTime: '2021-03-05T20:29:57Z'
-      message: The resource is up to date
       reason: UpToDate
       status: 'True'
       type: Ready
