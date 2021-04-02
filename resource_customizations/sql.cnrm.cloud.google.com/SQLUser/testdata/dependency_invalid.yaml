@@ -1,0 +1,47 @@
+apiVersion: sql.cnrm.cloud.google.com/v1beta1
+kind: SQLUser
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: none
+    cnrm.cloud.google.com/mutable-but-unreadable-fields: >-
+      {"spec":{"password":{"valueFrom":{"secretKeyRef":{"key":"password","name":"sqluser-dep"}}}}}
+    cnrm.cloud.google.com/observed-secret-versions: '{"sqluser-dep":"11072244"}'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"sql.cnrm.cloud.google.com/v1beta1","kind":"SQLUser","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"sql-user"},"name":"sqluser-sample","namespace":"default"},"spec":{"host":"%","instanceRef":{"name":"sqluser-dep"},"password":{"valueFrom":{"secretKeyRef":{"key":"password","name":"sqluser-dep"}}}},{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-05T23:09:38Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 4
+  labels:
+    argocd.argoproj.io/instance: sql-user
+  managedFields:
+    - apiVersion: sql.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-05T23:09:38Z'
+    - apiVersion: sql.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-05T23:10:26Z'
+  name: sqluser-sample
+  namespace: default
+  resourceVersion: '11072908'
+  selfLink: >-
+    /apis/sql.cnrm.cloud.google.com/v1beta1/namespaces/default/sqlusers/sqluser-sample
+  uid: bf502c23-32ad-4df4-9a44-b5931537f347
+spec:
+  host: '%'
+  instanceRef:
+    name: sqluser-dep
+  password:
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: sqluser-dep
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-05T20:22:09Z'
+      reason: DependencyInvalid
+      status: 'False'
+      type: Ready
