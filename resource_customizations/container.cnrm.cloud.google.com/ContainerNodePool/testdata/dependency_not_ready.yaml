@@ -1,0 +1,35 @@
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerNodePool
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: resource
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"container.cnrm.cloud.google.com/v1beta1","kind":"ContainerNodePool","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"container-node-pool"},"namespace":"default"},"spec":{"domains":["argocdtest.micke.me", "argocdtest2.micke.me", "argocdtest3.micke.me"]}}
+  creationTimestamp: '2021-03-04T01:02:17Z'
+  finalizers:
+    - cnrm.cloud.google.com/finalizer
+    - cnrm.cloud.google.com/deletion-defender
+  generation: 2
+  labels:
+    argocd.argoproj.io/instance: container-node-pool
+  managedFields:
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: argocd-application-controller
+      operation: Update
+      time: '2021-03-04T01:02:16Z'
+    - apiVersion: container.cnrm.cloud.google.com/v1beta1
+      manager: cnrm-controller-manager
+      operation: Update
+      time: '2021-03-04T01:02:18Z'
+  name: container-node-pool
+  namespace: default
+  resourceVersion: '9781745'
+  selfLink: >-
+    /apis/container.cnrm.cloud.google.com/v1beta1/namespaces/default/containernodepools/container-node-pool
+  uid: fb12f717-ea23-4ac1-a23f-2800d4e02c42
+status:
+  conditions:
+    - lastTransitionTime: '2021-03-01T19:46:04Z'
+      reason: DependencyNotReady
+      status: 'False'
+      type: Ready
